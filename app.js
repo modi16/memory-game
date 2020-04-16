@@ -51,14 +51,26 @@ const cardArray=[
 ]
 
 const grid = document.querySelector('.grid')
+var cardsChosen=[]
+var cardsChosenId=[]
 
 function createBoard(){
     for (let i=0; i<cardArray.length; i++){
-        let card=document.createElement('img');
-        card.setAttribute('src', 'images/blank.jpg');
+        var card=document.createElement('img')
+        card.setAttribute('src', 'images/blank.jpg')
         card.setAttribute('data-id', i);
-        // card.addEventListener('click', flipcard);
-        grid.appendChild(card);
+        card.addEventListener('click', flipCard)
+        grid.appendChild(card)
+    }
+}
+
+function flipCard(){
+    let cardId= this.getAttribute('data-id');
+    cardsChosen.push(cardArray[cardId].name)
+    cardsChosenId.push(cardArray[cardId])
+    this.setAttribute('src', cardArray[cardId].img)
+    if(cardsChosen.length===2){
+        setTimeout(checkforMatch,500)
     }
 }
 
