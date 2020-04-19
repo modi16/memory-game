@@ -65,10 +65,10 @@ function createBoard(){
 }
 
 function flipCard(){
-    let cardId= this.getAttribute('data-id');
+    var cardId= this.getAttribute('data-id');
     cardsChosen.push(cardArray[cardId].name)
     cardsChosenId.push(cardArray[cardId])
-    this.setAttribute('src', cardArray[cardId].img)
+    this.setAttribute('src', cardArray[cardId].image)
     if(cardsChosen.length===2){
         setTimeout(checkforMatch,500)
     }
