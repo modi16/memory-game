@@ -54,8 +54,17 @@ const grid = document.querySelector('.grid')
 var cardsChosen=[]
 var cardsChosenId=[]
 
+function checkforMatch(){
+    var card=document.querySelectorAll('image')
+    const optionOneId= cardsChosenId[0]
+    const optionTwoId= cardsChosenId[1]
+    if (cardsChosen[0]===cardsChosen[1]){
+        alert ("You found a match")
+    }
+}
+
 function createBoard(){
-    for (let i=0; i<cardArray.length; i++){
+    for (var i=0; i<cardArray.length; i++){
         var card=document.createElement('img')
         card.setAttribute('src', 'images/blank.jpg')
         card.setAttribute('data-id', i);
