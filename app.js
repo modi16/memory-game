@@ -2,61 +2,65 @@ document.addEventListener('DOMContentLoaded', ()=>{
 const cardArray=[
     {
         name:"anemone",
-        image: "images/anemone.jpg" 
+        img: "images/anemone.jpg" 
     },
     {
         name:"anemone",
-        image: "images/anemone.jpg" 
+        img: "images/anemone.jpg" 
     },
     {
         name:"dahlia",
-        image: "images/dahlia.jpg" 
+        img: "images/dahlia.jpg" 
     },
     {
         name:"dahlia",
-        image: "images/dahlia.jpg" 
+        img: "images/dahlia.jpg" 
     },
     {
         name:"redflower",
-        image: "images/redflower.jpg" 
+        img: "images/redflower.jpg" 
     },
     {
         name:"redflower",
-        image: "images/redflower.jpg" 
+        img: "images/redflower.jpg" 
     },
     {
         name:"rose",
-        image: "images/rose.jpg" 
+        img: "images/rose.jpg" 
     },
     {
         name:"rose",
-        image: "images/rose.jpg" 
+        img: "images/rose.jpg" 
     },
     {
         name:"tulip",
-        image:"images/tulip.jpg" 
+        img:"images/tulip.jpg" 
     },
     {
         name:"tulip",
-        image:"images/tulip.jpg" 
+        img:"images/tulip.jpg" 
     },
     {
         name:"yellow",
-        image: "images/yellow.jpg" 
+        img: "images/yellow.jpg" 
     },
     {
         name:"yellow",
-        image: "images/yellow.jpg" 
+        img: "images/yellow.jpg" 
     }
 ]
 
+cardArray.sort(()=> 0.5- Math.random())
+
 const grid = document.querySelector('.grid')
+const resultDisplay = document.querySelector('#result')
+
 var cardsChosen=[]
 var cardsChosenId=[]
 var cardsWon=[]
 
 function checkforMatch(){
-    var cards=document.querySelectorAll('image')
+    var cards=document.querySelectorAll('img')
     const optionOneId= cardsChosenId[0]
     const optionTwoId= cardsChosenId[1]
     if (cardsChosen[0]===cardsChosen[1]){
@@ -71,6 +75,10 @@ function checkforMatch(){
     }
     cardsChosenId=[]
     cardsChosen=[]
+    resultDisplay.textContent=cardsWon.length
+    if (cardsWon.length===cardArray.length/2){
+        resultDisplay.textContent="Congratulations! You found them all"
+    }
 }
 
 function createBoard(){
@@ -87,7 +95,7 @@ function flipCard(){
     var cardId= this.getAttribute('data-id');
     cardsChosen.push(cardArray[cardId].name)
     cardsChosenId.push(cardArray[cardId])
-    this.setAttribute('src', cardArray[cardId].image)
+    this.setAttribute('src', cardArray[cardId].img)
     if(cardsChosen.length===2){
         setTimeout(checkforMatch,500)
     }
