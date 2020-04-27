@@ -3,4 +3,13 @@
     flex-wrap: wrap;
     height: 300px;
     width: 400px;
+    margin: 0 auto;
+}
+h3{
+    text-align: center;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
