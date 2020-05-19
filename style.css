@@ -8,7 +8,7 @@
 h3{
     text-align: center;
 }
-.container{
+.main{
     display: flex;
     align-items: center;
     justify-content: center;
